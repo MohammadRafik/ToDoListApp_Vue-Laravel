@@ -1,0 +1,1 @@
+-the mysql in config/database.php has been changed,charset and collation values were changed, which means i wont be able to save multibyte special characters like those from Arabic, Hebrew, most European scripts, and of course emoji
