@@ -23,9 +23,9 @@
                     <div class='taskVerticalControl'>
                         <div class='taskHeader'>
                             <h3 class=taskTitle> @{{ task.task }}</h3> 
-                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)'>Start working!</button>
+                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html="task.playAndPauseButttonSymbole"></button>
                             <p v-if="Tasks[index].toggleMode" class='taskSessionTimer'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
-                            <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)'></a>
+                            <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)' title='delete this task'></a>
                         </div>
                         <div class='taskBody'>
                             <p></p>
@@ -68,6 +68,7 @@
 
     .taskTimeToggle{
         grid-column-start:4;
+
     }
 
     .taskSessionTimer{

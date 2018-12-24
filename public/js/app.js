@@ -1819,12 +1819,21 @@ __webpack_require__.r(__webpack_exports__);
         timeWorked: 0,
         workDoneMessage: 'You havent started working on this task yet',
         toggleMode: false,
-        workTimeUpdateCheck: ''
+        workTimeUpdateCheck: '',
+        playAndPauseButttonSymbole: '&#9658'
       }
     };
   },
-  created: function created() {},
-  computed: {},
+  // this triggeres when something in Task changes... i think
+  // watch: {
+  //       Task: {
+  //         handler: function(newValue){
+  //           console.log('something changed')
+  //           console.log(newValue)
+  //         },
+  //         deep:true
+  //   }
+  // },
   methods: {
     savenewtask: function savenewtask() {
       this.$emit('savenewtask', this.Task);
@@ -49657,15 +49666,19 @@ var app = new Vue({
     },
     toggleTrigger: function toggleTrigger(index) {
       //   switch toggle mode
-      this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode;
+      this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode; //   here we update work done message if new work has started on a new task
 
       if (this.Tasks[index].workDoneMessage == 'You havent started working on this task yet') {
         this.Tasks[index].workDoneMessage = "less than a minute";
-      }
+      } //   resetting a variable to 0 everytime user ends a session of a task
+
 
       if (!this.Tasks[index].toggleMode) {
         this.Tasks[index].workTimeUpdateCheck = 0;
-      }
+      } //   here we update what the picture on the button should be
+
+
+      if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '&#9658';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '&#10074';
     },
     updateTotalWorkTime: function updateTotalWorkTime(value, index) {
       this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;

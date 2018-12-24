@@ -23,18 +23,23 @@ export default {
         timeWorked: 0,
         workDoneMessage: 'You havent started working on this task yet',
         toggleMode: false,
-        workTimeUpdateCheck: ''
+        workTimeUpdateCheck: '',
+        playAndPauseButttonSymbole: '&#9658'
       }
 
 
     }
   },
-  created () {
-
-  },
-  computed: {
-    
-  },
+  // this triggeres when something in Task changes... i think
+  // watch: {
+  //       Task: {
+  //         handler: function(newValue){
+  //           console.log('something changed')
+  //           console.log(newValue)
+  //         },
+  //         deep:true
+  //   }
+  // },
 
   methods:{
     savenewtask: function(){

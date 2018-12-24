@@ -56,12 +56,22 @@ const app = new Vue({
         toggleTrigger: function(index){
             //   switch toggle mode
               this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode;
+
+            //   here we update work done message if new work has started on a new task
               if(this.Tasks[index].workDoneMessage == 'You havent started working on this task yet'){
                 this.Tasks[index].workDoneMessage = "less than a minute";
               }
+
+            //   resetting a variable to 0 everytime user ends a session of a task
               if(!this.Tasks[index].toggleMode){
                   this.Tasks[index].workTimeUpdateCheck = 0;
               }
+
+            //   here we update what the picture on the button should be
+            if(!this.Tasks[index].toggleMode)
+              this.Tasks[index].playAndPauseButttonSymbole = '&#9658';
+            else if(this.Tasks[index].toggleMode)
+                this.Tasks[index].playAndPauseButttonSymbole = '&#10074';
             
         },
 
