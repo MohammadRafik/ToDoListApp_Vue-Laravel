@@ -69,9 +69,9 @@ const app = new Vue({
 
             //   here we update what the picture on the button should be
             if(!this.Tasks[index].toggleMode)
-              this.Tasks[index].playAndPauseButttonSymbole = '&#9658';
+              this.Tasks[index].playAndPauseButttonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';
             else if(this.Tasks[index].toggleMode)
-                this.Tasks[index].playAndPauseButttonSymbole = '&#10074';
+                this.Tasks[index].playAndPauseButttonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
             
         },
 
@@ -121,3 +121,7 @@ const app = new Vue({
         }
     },
 });
+
+
+
+//this is to get play and puase button

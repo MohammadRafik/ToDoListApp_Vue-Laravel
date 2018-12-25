@@ -1820,7 +1820,7 @@ __webpack_require__.r(__webpack_exports__);
         workDoneMessage: 'You havent started working on this task yet',
         toggleMode: false,
         workTimeUpdateCheck: '',
-        playAndPauseButttonSymbole: '&#9658'
+        playAndPauseButttonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>'
       }
     };
   },
@@ -49678,7 +49678,7 @@ var app = new Vue({
       } //   here we update what the picture on the button should be
 
 
-      if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '&#9658';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '&#10074';
+      if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
     },
     updateTotalWorkTime: function updateTotalWorkTime(value, index) {
       this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;
@@ -49716,7 +49716,7 @@ var app = new Vue({
       if (hours) return " " + hours + " Hours and " + mins + " minutes";else if (mins) return " " + mins + " Minutes";
     }
   }
-});
+}); //this is to get play and puase button
 
 /***/ }),
 

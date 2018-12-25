@@ -22,17 +22,17 @@
                     <li class="list-group-item" v-for='(task, index) in Tasks' :key='index'>
                     <div class='taskVerticalControl'>
                         <div class='taskHeader'>
-                            <h3 class=taskTitle> @{{ task.task }}</h3> 
-                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html="task.playAndPauseButttonSymbole"></button>
-                            <p v-if="Tasks[index].toggleMode" class='taskSessionTimer'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
+                            <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
+                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButttonSymbole' > </button>
+                            <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
                             <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)' title='delete this task'></a>
                         </div>
                         <div class='taskBody'>
                             <p></p>
-                            <p class='taskDescription'> @{{task.description}}</p>
+                            <p class='taskDescription' title='Task Description'> @{{task.description}}</p>
                         </div>
                         <div class='taskFooter'>
-                            <p>total work: @{{ task.workDoneMessage }}</p>
+                            <p title='Total work done on this task'>total work: @{{ task.workDoneMessage }}</p>
                         </div>
                     </li>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <add-a-task v-on:savenewtask='updateTaskList'></add-a-task>
                     <button v-on:click="openTaskAdder">add  a task +</button>
-                    <p v-if="totalWorkOfAllTasks">Total work done today: @{{ totalWorkOfAllTasks }}</p>
+                    <p v-if="totalWorkOfAllTasks" title='total work done on all tasks'>Total work done today: @{{ totalWorkOfAllTasks }}</p>
                 </div>
             </div>
     </div>
@@ -58,7 +58,7 @@
 
     .taskHeader{
         display:grid;
-        grid-template-columns:2% 40% 10% 15% 5% 20% 5% 3%;
+        grid-template-columns:2% 40% 20% 5% 5% 20% 5% 3%;
         padding:1px;
     }
 
@@ -68,7 +68,17 @@
 
     .taskTimeToggle{
         grid-column-start:4;
+        background: none;
+        border: none;
+        padding: 10px 0px;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        border-radius:50%;
 
+    }
+    .taskTimeToggle:focus{
+        outline:0;
     }
 
     .taskSessionTimer{
