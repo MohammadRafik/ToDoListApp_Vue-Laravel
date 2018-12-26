@@ -19,22 +19,25 @@
             <div class="card-header">Todays Tasks</div>      
                 {{-- show all tasks --}}
                 <ul class="list-group list-group-flush">
+                    <transition-group name='fadeSlow'>
                     <li class="list-group-item" v-for='(task, index) in Tasks' :key='index'>
                     <div class='taskVerticalControl'>
                         <div class='taskHeader'>
                             <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
                             <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButttonSymbole' > </button>
-                            <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
+                            <transition name='fade'>
+                                <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
+                            </transition>
                             <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)' title='delete this task'></a>
                         </div>
                         <div class='taskBody'>
-                            <p></p>
                             <p class='taskDescription' title='Task Description'> @{{task.description}}</p>
                         </div>
                         <div class='taskFooter'>
                             <p title='Total work done on this task'>total work: @{{ task.workDoneMessage }}</p>
                         </div>
                     </li>
+                    </transition-group>
                     </div>
                 </ul>
                 {{-- add new task --}}
@@ -83,6 +86,8 @@
 
     .taskSessionTimer{
         grid-column-start:6;
+        display:flex;
+        align-items:flex-end;
     }
 
     /* close button style */
@@ -116,7 +121,7 @@
 
     .taskBody{
         display:grid;
-        grid-template-columns:5% 46% 51%;
+        grid-template-columns:5% 54% 43%;
 
         padding 1px;
     }
@@ -129,5 +134,20 @@
 
     }
 
+    /* transitoin effects */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+/* .fadeSlow-leave-active does not work properly need to fix */
+.fadeSlow-enter-active {
+  transition: opacity 1s;
+}
+.fadeSlow-enter, .fadeSlow-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
 @endsection

@@ -1809,6 +1809,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'addTask',
   data: function data() {
@@ -1836,7 +1851,10 @@ __webpack_require__.r(__webpack_exports__);
   // },
   methods: {
     savenewtask: function savenewtask() {
+      // if(this.Task.task)
       this.$emit('savenewtask', this.Task);
+      this.Task.task = '';
+      this.Task.description = '';
     }
   }
 });
@@ -5891,7 +5909,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".box {\n  background: white;\n  overflow: hidden;\n  width: 656px;\n  height: 400px;\n  border-radius: 2px;\n  box-sizing: border-box;\n  box-shadow: 0 0 40px black;\n  color: #8b8c8d;\n  display: flex;\n  justify-content: center;\n  padding: 20px;\n}\n.inputStyle {\n  position: center;\n  width: 60%;\n  padding: 12px 20px;\n  margin: 8px 0;\n  box-sizing: border-box;\n}", ""]);
+exports.push([module.i, ".box {\n  background: white;\n  overflow: hidden;\n  width: 656px;\n  height: 400px;\n  border-radius: 2px;\n  box-sizing: border-box;\n  box-shadow: 0 0 40px black;\n  color: #8b8c8d;\n  display: flex;\n  padding: 20px;\n}\n.boxTitle {\n  width: 565px;\n  height: 55px;\n  display: flex;\n  justify-content: center;\n  padding: 20px;\n  margin-bottom: 20px;\n}\n.inputFields {\n  display: flex;\n  justify-content: flex-start;\n  flex-direction: column;\n  width: 565px;\n}\n.inputTitle {\n  width: 80%;\n}", ""]);
 
 // exports
 
@@ -38246,67 +38264,88 @@ var render = function() {
     { attrs: { name: "add-task", transition: "pop-out", height: 400 } },
     [
       _c("div", { staticClass: "box" }, [
-        _c("form", [
-          _c("h3", [_vm._v("Add a Task")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.Task.task,
-                expression: "Task.task"
-              }
-            ],
-            staticClass: "inputStyle",
-            attrs: { type: "text", placeholder: "task Title" },
-            domProps: { value: _vm.Task.task },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c("div", { staticClass: "form-group" }, [
+          _c("form", [
+            _c("div", { staticClass: "boxTitle" }, [
+              _c("h3", [_vm._v("Add a Task")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "inputFields" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Task.task,
+                    expression: "Task.task"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Task Title" },
+                domProps: { value: _vm.Task.task },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.Task, "task", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.Task, "task", $event.target.value)
-              }
-            }
-          }),
-          _c("br"),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.Task.description,
-                expression: "Task.description"
-              }
-            ],
-            attrs: { name: "taskDescription", id: "", cols: "30", rows: "10" },
-            domProps: { value: _vm.Task.description },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              }),
+              _c("br"),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Task.description,
+                    expression: "Task.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "taskDescription",
+                  cols: "30",
+                  rows: "5",
+                  placeholder: "Description (Optional)"
+                },
+                domProps: { value: _vm.Task.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.Task, "description", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.Task, "description", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.savenewtask($event)
-                }
-              }
-            },
-            [_vm._v("Save")]
-          )
+              })
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 center-block" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: [
+                      function($event) {
+                        $event.preventDefault()
+                        return _vm.savenewtask($event)
+                      },
+                      function($event) {
+                        _vm.$modal.hide("add-task")
+                      }
+                    ]
+                  }
+                },
+                [_vm._v("Create")]
+              )
+            ])
+          ])
         ])
       ])
     ]

@@ -1,13 +1,28 @@
 <template>
 <modal name="add-task" transition="pop-out" :height="400">
   <div class="box">
+
+    <!-- <div slot="top-right">
+      <button @click="$modal.hide('add-task')">
+        ❌
+      </button>
+    </div> -->
+
+  <div class="form-group">
     <form>
-      <h3>Add a Task</h3>
-      <input v-model='Task.task' class="inputStyle" type="text" placeholder="task Title"><br>
-      <textarea v-model='Task.description' name="taskDescription" id="" cols="30" rows="10"></textarea>
+      <div class='boxTitle'>
+        <h3>Add a Task</h3>
+      </div>
+      <div class='inputFields'>
+          <input type='text' v-model='Task.task' class="form-control" placeholder="Task Title" ><br>
+          <textarea type='text' v-model='Task.description' name="taskDescription" class="form-control" cols="30" rows="5" placeholder="Description (Optional)"></textarea>
+      </div>
       <br>
-      <button v-on:click.prevent='savenewtask'>Save</button>
+      <div class="col-lg-3 center-block">
+        <button v-on:click.prevent='savenewtask' v-on:click="$modal.hide('add-task')" class="btn btn-primary">Create</button>
+      </div>
     </form>
+  </div>
   </div>
 </modal>
 </template>
@@ -43,7 +58,11 @@ export default {
 
   methods:{
     savenewtask: function(){
-      this.$emit('savenewtask', this.Task)
+      // if(this.Task.task)
+        this.$emit('savenewtask', this.Task);
+        this.Task.task = '';
+        this.Task.description = '';  
+        
     }
   }
 
@@ -63,16 +82,31 @@ $background_color: #404142;
   box-shadow: 0 0 40px black;
   color: #8b8c8d;
   display:flex;
-  justify-content: center;
+
   padding:20px;
 
 }
 
-.inputStyle {
-  position: center;
-  width: 60%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+.boxTitle{
+  width: 565px;
+  height:55px;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+  margin-bottom:20px;
 }
+
+.inputFields {
+  display:flex;
+  justify-content:flex-start;
+  flex-direction:column;
+  width: 565px;
+
+}
+
+.inputTitle{
+  width:80%;
+}
+
+
 </style>
