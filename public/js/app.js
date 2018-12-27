@@ -1829,6 +1829,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       Task: {
+        id: '',
         task: '',
         description: '',
         timeWorked: 0,
@@ -1851,7 +1852,8 @@ __webpack_require__.r(__webpack_exports__);
   // },
   methods: {
     savenewtask: function savenewtask() {
-      // if(this.Task.task)
+      if (!this.Task.id) this.Task.id = 1;else this.Task.id++; // if(this.Task.task)
+
       this.$emit('savenewtask', this.Task);
       this.Task.task = '';
       this.Task.description = '';

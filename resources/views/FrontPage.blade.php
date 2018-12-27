@@ -20,11 +20,11 @@
                 {{-- show all tasks --}}
                 <ul class="list-group list-group-flush">
                     <transition-group name='fadeSlow'>
-                    <li class="list-group-item" v-for='(task, index) in Tasks' :key='index'>
+                    <li class="list-group-item" v-for='(task, index) in Tasks' :key='task.id'>
                     <div class='taskVerticalControl'>
                         <div class='taskHeader'>
                             <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
-                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButttonSymbole' > </button>
+                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButttonSymbole' ></button>
                             <transition name='fade'>
                                 <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
                             </transition>
@@ -78,7 +78,11 @@
         cursor: pointer;
         outline: inherit;
         border-radius:50%;
+        opacity:0.6;
 
+    }
+    .taskTimeToggle:hover{
+        opacity:1;
     }
     .taskTimeToggle:focus{
         outline:0;
@@ -142,8 +146,8 @@
   opacity: 0;
 }
 
-/* .fadeSlow-leave-active does not work properly need to fix */
-.fadeSlow-enter-active {
+
+.fadeSlow-enter-active, .fadeSlow-leave-active {
   transition: opacity 1s;
 }
 .fadeSlow-enter, .fadeSlow-leave-to /* .fade-leave-active below version 2.1.8 */ {
