@@ -5,10 +5,16 @@
 @guest
     {{-- guest user --}}
     <div id="app">
+        <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-sm-10">
             <br>
             <h1>Welcome to {{ config('app.name', 'ToDoList') }}!</h1><br>
             <h4><a href={{ route('register') }}> Register </a> to start using ToDoList</h4>
             <h5>already have an account? <a href= {{ route('login') }}>Login</a>
+        </div>
+        </div>
+        </div>
             
     </div>
 @else 
@@ -22,8 +28,8 @@
                 {{-- show all tasks --}}
                 <ul class="list-group list-group-flush">
                     <transition-group name='fadeSlow'>
-                    <li class="list-group-item" v-for='(task, index) in Tasks' :key='task.id'>
-                    <div class='taskVerticalControl'>
+                    <li class="list-group-item" v-for='(task, index) in Tasks' :key='task.id' v-bind:style="{ backgroundColor: task.color}">
+                    <div class='taskVerticalControl' >
                         <div class='taskHeader'>
                             <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
                             <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButttonSymbole' ></button>
@@ -35,12 +41,13 @@
                         <div class='taskBody'>
                             <p class='taskDescription' title='Task Description'> @{{task.description}}</p>
                             <div class='completeTaskButton'>
-                                <button class="btn btn-finishTask">Task completed</button>
+                                <button class="btn btn-finishTask" v-on:click='taskCompleted(index)'>Task completed</button>
                             </div>
                         </div>
                         <div class='taskFooter'>
                             <p title='Total work done on this task'>total work: @{{ task.workDoneMessage }}</p>
                         </div>
+                    </div>
                     </li>
                     </transition-group>
                     </div>
@@ -71,6 +78,15 @@
 
     .taskVerticalControl{
     }
+
+    .taskCompletedText{
+        text-decoration: line-through;
+    }
+
+    .taskCompletedColor{
+        background-color:#ecffe6;
+    }
+
 
     .taskHeader{
         display:grid;
@@ -151,6 +167,10 @@
         grid-coloumn-start:3;
         background-color:lime;
         color:#fff;
+    }
+
+    .btn-finishTask:hover{
+        background-color:limegreen;
     }
 
     .taskFooter{

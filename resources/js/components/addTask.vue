@@ -14,7 +14,7 @@
         <h3>Add a Task</h3>
       </div>
       <div class='inputFields'>
-          <input type='text' v-model='Task.task' class="form-control" placeholder="Task Title" autofocus ><br>
+          <input type='text' v-model='Task.task' class="form-control" placeholder="Task Title" id='modalTaskTitle' ><br>
           <textarea type='text' v-model='Task.description' name="taskDescription" class="form-control" cols="30" rows="5" placeholder="Description (Optional)"></textarea>
       </div>
       <br>
@@ -40,7 +40,10 @@ export default {
         workDoneMessage: 'You havent started working on this task yet',
         toggleMode: false,
         workTimeUpdateCheck: '',
-        playAndPauseButttonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>'
+        playAndPauseButttonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
+        taskCompleted: false,
+        color: 'white',
+
       }
 
 
@@ -68,9 +71,11 @@ export default {
         this.$emit('savenewtask', this.Task);
         this.Task.task = '';
         this.Task.description = '';  
-        
-    }
-  }
+    },
+
+  },
+
+
 
 
 }

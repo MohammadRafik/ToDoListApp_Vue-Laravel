@@ -100,6 +100,14 @@ const app = new Vue({
             this.Tasks.splice(index,1);
         },
 
+        taskCompleted: function(index){
+            this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
+            if(this.Tasks[index].taskCompleted)
+              this.Tasks[index].color = '#d9ffcc';
+            else
+              this.Tasks[index].color = 'white';
+          }
+
     },
 
     computed:{
@@ -118,10 +126,12 @@ const app = new Vue({
                 return  " " + hours + " Hours and " + mins + " minutes";
             else if(mins)
                 return  " " + mins + " Minutes";
-        }
+        },
+
+
+
     },
 });
 
 
 
-//this is to get play and puase button
