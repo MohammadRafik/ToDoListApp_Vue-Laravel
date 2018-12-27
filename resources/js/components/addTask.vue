@@ -14,7 +14,7 @@
         <h3>Add a Task</h3>
       </div>
       <div class='inputFields'>
-          <input type='text' v-model='Task.task' class="form-control" placeholder="Task Title" ><br>
+          <input type='text' v-model='Task.task' class="form-control" placeholder="Task Title" autofocus ><br>
           <textarea type='text' v-model='Task.description' name="taskDescription" class="form-control" cols="30" rows="5" placeholder="Description (Optional)"></textarea>
       </div>
       <br>

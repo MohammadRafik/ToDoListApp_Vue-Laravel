@@ -38283,7 +38283,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Task Title" },
+                attrs: {
+                  type: "text",
+                  placeholder: "Task Title",
+                  autofocus: ""
+                },
                 domProps: { value: _vm.Task.task },
                 on: {
                   input: function($event) {

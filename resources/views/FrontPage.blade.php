@@ -15,6 +15,8 @@
     {{-- this section is for logged in users --}}
 <div id='app'>
     <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-sm-10">
         <div class="card">
             <div class="card-header">Todays Tasks</div>      
                 {{-- show all tasks --}}
@@ -32,6 +34,9 @@
                         </div>
                         <div class='taskBody'>
                             <p class='taskDescription' title='Task Description'> @{{task.description}}</p>
+                            <div class='completeTaskButton'>
+                                <button class="btn btn-finishTask">Task completed</button>
+                            </div>
                         </div>
                         <div class='taskFooter'>
                             <p title='Total work done on this task'>total work: @{{ task.workDoneMessage }}</p>
@@ -39,12 +44,20 @@
                     </li>
                     </transition-group>
                     </div>
+                </div>
+                </div>
                 </ul>
                 {{-- add new task --}}
+                <div class="row justify-content-center">
+                <div class="col-sm-10">
                 <div class="card-body">
                     <add-a-task v-on:savenewtask='updateTaskList'></add-a-task>
-                    <button v-on:click="openTaskAdder">add  a task +</button>
+                    <div class='addTaskButton'>
+                        <button v-on:click="openTaskAdder" class="btn btn-primary">add  a task +</button>
+                    </div>
                     <p v-if="totalWorkOfAllTasks" title='total work done on all tasks'>Total work done today: @{{ totalWorkOfAllTasks }}</p>
+                </div>
+                </div>
                 </div>
             </div>
     </div>
@@ -61,7 +74,7 @@
 
     .taskHeader{
         display:grid;
-        grid-template-columns:2% 40% 20% 5% 5% 20% 5% 3%;
+        grid-template-columns:2% 40% 10% 5% 5% 20% 15% 3%;
         padding:1px;
     }
 
@@ -134,7 +147,17 @@
         grid-column-start:2;
     }
 
+    .btn-finishTask{
+        grid-coloumn-start:3;
+        background-color:lime;
+        color:#fff;
+    }
+
     .taskFooter{
+
+    }
+
+    .addTaskButton{
 
     }
 
@@ -147,9 +170,14 @@
 }
 
 
-.fadeSlow-enter-active, .fadeSlow-leave-active {
+.fadeSlow-enter-active {
   transition: opacity 1s;
 }
+
+.fadeSlow-leave-active{
+    transition: opacity 0.5s;
+}
+
 .fadeSlow-enter, .fadeSlow-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
