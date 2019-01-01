@@ -15,7 +15,7 @@ class CreateTaskDatasTable extends Migration
     {
         Schema::create('task_datas', function (Blueprint $table) {
             $table->increments('Tableid');
-            $table->int('id');
+            $table->integer('id');
             $table->string('task');
             $table->string('description');
             $table->bigInteger('timeWorked');
