@@ -14,13 +14,14 @@ class CreateTaskDatasTable extends Migration
     public function up()
     {
         Schema::create('task_datas', function (Blueprint $table) {
-            $table->increments('Tableid');
-            $table->integer('id');
+            $table->increments('Table_id');
+            $table->integer('User_id');
             $table->string('task');
             $table->string('description');
             $table->bigInteger('timeWorked');
             $table->string('workDoneMessage');
             $table->boolean('toggleMode');
+            $table->integer('workTimeUpdateCheck');
             $table->string('playAndPauseButtonSymbole');
             $table->boolean('taskCompleted');
             $table->string('color');
