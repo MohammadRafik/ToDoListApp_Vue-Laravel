@@ -2,4 +2,4 @@ This is an appto list things u want to work on and track how long u have been wo
 
 demo:
 
-![] (toDoList_Demo.gif)
+![](toDoList_Demo.gif)
