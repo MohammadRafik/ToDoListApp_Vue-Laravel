@@ -13,6 +13,13 @@ window.Vue = require('vue');
 import VModal from 'vue-js-modal'
 Vue.use(VModal)
 
+
+// including axios                  for some reason this is causing a bug
+                                    // import axios from 'axios'
+                                    // Vue.use(axios)
+Vue.prototype.$axios = axios;
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -34,6 +41,19 @@ Vue.component('stopwatch', require('./components/stopwatch.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+axios.get('/edit')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
 
 const app = new Vue({
     el: '#app',

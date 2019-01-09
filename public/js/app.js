@@ -1830,6 +1830,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       Task: {
         id: '',
+        User_id: '',
         task: '',
         description: '',
         timeWorked: 0,
@@ -49676,7 +49677,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // including a vue extension/component for custimaizable pop-ups
 
 
-Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
+Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a); // including axios                  for some reason this is causing a bug
+// import axios from 'axios'
+// Vue.use(axios)
+
+Vue.prototype.$axios = axios;
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49696,6 +49701,14 @@ Vue.component('stopwatch', __webpack_require__(/*! ./components/stopwatch.vue */
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+axios.get('/edit').then(function (response) {
+  // handle success
+  console.log(response);
+}).catch(function (error) {
+  // handle error
+  console.log(error);
+}).then(function () {// always executed
+});
 var app = new Vue({
   el: '#app',
   data: function data() {

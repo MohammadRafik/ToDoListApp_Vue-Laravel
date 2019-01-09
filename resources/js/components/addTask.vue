@@ -33,6 +33,7 @@ export default {
   data () {
     return {
       Task:{
+        id: '',
         User_id: '',
         task: '',
         description: '',
@@ -62,10 +63,10 @@ export default {
 
   methods:{
     savenewtask: function(){
-        // if(!this.Task.id)
-        //   this.Task.id = 1;
-        // else
-        //   this.Task.id++;
+        if(!this.Task.id)
+          this.Task.id = 1;
+        else
+          this.Task.id++;
 
       // if(this.Task.task)
         this.$emit('savenewtask', this.Task);

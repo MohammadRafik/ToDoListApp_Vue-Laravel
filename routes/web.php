@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/profile', 'HomeController@index')->name('profile');
+Route::get('/edit', function(){
+    return 'pepega 123';
+});
