@@ -1839,7 +1839,8 @@ __webpack_require__.r(__webpack_exports__);
         workTimeUpdateCheck: '',
         playAndPauseButtonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
         taskCompleted: false,
-        color: 'white'
+        color: 'white',
+        todaysTask: true
       }
     };
   },
@@ -49767,7 +49768,6 @@ var app = new Vue({
       this.$modal.show('add-task');
     },
     updateTaskList: function updateTaskList(value) {
-      debugger;
       var valueReal = JSON.parse(JSON.stringify(value));
       this.Tasks.push(valueReal);
     },

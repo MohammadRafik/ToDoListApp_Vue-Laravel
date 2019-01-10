@@ -32,6 +32,7 @@ class TaskDataController extends Controller
             'playAndPauseButtonSymbole' => $taskDataFromJS['playAndPauseButtonSymbole'],
             'taskCompleted' => $taskDataFromJS['taskCompleted'],
             'color' => $taskDataFromJS['color'],
+            'todaysTask' =>$taskDataFromJS['todaysTask'],
 
         ]);
     }

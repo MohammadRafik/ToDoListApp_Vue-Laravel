@@ -113,10 +113,8 @@ const app = new Vue({
 
         updateTaskList (value)
         {
-            debugger
             var valueReal = JSON.parse(JSON.stringify(value));
             this.Tasks.push(valueReal);
-
         },
 
 

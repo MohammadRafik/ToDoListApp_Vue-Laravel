@@ -44,6 +44,7 @@ export default {
         playAndPauseButtonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
         taskCompleted: false,
         color: 'white',
+        todaysTask: true,
 
       }
 

@@ -25,6 +25,7 @@ class CreateTaskDatasTable extends Migration
             $table->string('playAndPauseButtonSymbole');
             $table->boolean('taskCompleted');
             $table->string('color');
+            $table->boolean('todaysTask');
             $table->timestamps();
         });
     }
