@@ -21,3 +21,6 @@ Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('/edit', function(){
     return 'pepega 123';
 });
+
+
+Route::post('/createNewTask', 'TaskDataController@create');

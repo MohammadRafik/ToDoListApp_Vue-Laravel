@@ -41,7 +41,7 @@ export default {
         workDoneMessage: 'You havent started working on this task yet',
         toggleMode: false,
         workTimeUpdateCheck: '',
-        playAndPauseButttonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
+        playAndPauseButtonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
         taskCompleted: false,
         color: 'white',
 

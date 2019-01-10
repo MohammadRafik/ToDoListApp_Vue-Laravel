@@ -42,18 +42,10 @@ Vue.component('stopwatch', require('./components/stopwatch.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-axios.get('/edit')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
+
+
+
+
 
 const app = new Vue({
     el: '#app',
@@ -70,7 +62,18 @@ const app = new Vue({
         },
 
         updateTaskList (value) {
-            this.Tasks.push(JSON.parse(JSON.stringify(value)));
+            var valueReal = JSON.parse(JSON.stringify(value));
+            this.Tasks.push(valueReal);
+
+            //save this new task on the server
+
+            axios.post('/createNewTask', valueReal)
+            .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         },
 
         toggleTrigger: function(index){

@@ -18,7 +18,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Task()
+    public function TaskDatas()
     {
         return $this->hasMany('App\TaskData');
         // in the controller to get all tasks do: $tasks = App\User::find(1)->Task; then u have a bunch of Tasks in in $tasks and u can loop throguh it with a foreach of whatever

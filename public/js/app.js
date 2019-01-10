@@ -1837,7 +1837,7 @@ __webpack_require__.r(__webpack_exports__);
         workDoneMessage: 'You havent started working on this task yet',
         toggleMode: false,
         workTimeUpdateCheck: '',
-        playAndPauseButttonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
+        playAndPauseButtonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
         taskCompleted: false,
         color: 'white'
       }
@@ -49701,14 +49701,6 @@ Vue.component('stopwatch', __webpack_require__(/*! ./components/stopwatch.vue */
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-axios.get('/edit').then(function (response) {
-  // handle success
-  console.log(response);
-}).catch(function (error) {
-  // handle error
-  console.log(error);
-}).then(function () {// always executed
-});
 var app = new Vue({
   el: '#app',
   data: function data() {
@@ -49722,7 +49714,14 @@ var app = new Vue({
       this.$modal.show('add-task');
     },
     updateTaskList: function updateTaskList(value) {
-      this.Tasks.push(JSON.parse(JSON.stringify(value)));
+      var valueReal = JSON.parse(JSON.stringify(value));
+      this.Tasks.push(valueReal); //save this new task on the server
+
+      axios.post('/createNewTask', valueReal).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     toggleTrigger: function toggleTrigger(index) {
       //   switch toggle mode

@@ -29,6 +29,7 @@
 
 </head>
 <body>
+        {{csrf_field()}}
     <div id="app">
         {{-- header --}}
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
