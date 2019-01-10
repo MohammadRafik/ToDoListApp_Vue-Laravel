@@ -32,7 +32,7 @@
                     <div class='taskVerticalControl' >
                         <div class='taskHeader'>
                             <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
-                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButttonSymbole' ></button>
+                            <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButtonSymbole' ></button>
                             <transition name='fade'>
                                 <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
                             </transition>

@@ -49667,6 +49667,8 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
 /* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49709,6 +49711,50 @@ var app = new Vue({
       totalWorkTimeOfDeletedTasks: 0
     };
   },
+  //first we check to see if there are any tasks on the server, if yes we load it into this.Tasks
+  mounted: function mounted() {
+    var self = this; //load tasks from the server
+
+    axios.get('/getAllTasks').then(function (response) {
+      if (Object.prototype.toString.call(response.data) == '[object Array]') {
+        response.data.forEach(function (element) {
+          var taskFromServer = {
+            id: element.id,
+            User_id: element.user_id,
+            task: element.task,
+            description: element.description,
+            timeWorked: element.timeWorked,
+            workDoneMessage: element.workDoneMessage,
+            toggleMode: element.toggleMode,
+            workTimeUpdateCheck: element.workTimeUpdateCheck,
+            playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
+            taskCompleted: element.taskCompleted,
+            color: element.color
+          };
+          self.Tasks.push(taskFromServer);
+        });
+      } else if (_typeof(response.data) == 'object') {
+        for (var property in response.data) {
+          var taskFromServer = {
+            id: response.data[property].id,
+            User_id: response.data[property].user_id,
+            task: response.data[property].task,
+            description: response.data[property].description,
+            timeWorked: response.data[property].timeWorked,
+            workDoneMessage: response.data[property].workDoneMessage,
+            toggleMode: response.data[property].toggleMode,
+            workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
+            playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
+            taskCompleted: response.data[property].taskCompleted,
+            color: response.data[property].color
+          };
+          self.Tasks.push(taskFromServer);
+        }
+      }
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },
   methods: {
     openTaskAdder: function openTaskAdder() {
       this.$modal.show('add-task');
@@ -49721,6 +49767,25 @@ var app = new Vue({
         console.log(response);
       }).catch(function (error) {
         console.log(error);
+      });
+    },
+    addTasksFromServer: function addTasksFromServer(tasksArray) {
+      tasksArray.forEach(function (element) {
+        console.log(element);
+        var taskFromServer = {
+          id: element.id,
+          User_id: element.user_id,
+          task: element.task,
+          description: element.description,
+          timeWorked: element.timeWorked,
+          workDoneMessage: element.workDoneMessage,
+          toggleMode: element.toggleMode,
+          workTimeUpdateCheck: element.workTimeUpdateCheck,
+          playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
+          taskCompleted: element.taskCompleted,
+          color: element.color
+        };
+        this.Tasks.push(taskFromServer);
       });
     },
     toggleTrigger: function toggleTrigger(index) {
@@ -49737,7 +49802,7 @@ var app = new Vue({
       } //   here we update what the picture on the button should be
 
 
-      if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButttonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
+      if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
     },
     updateTotalWorkTime: function updateTotalWorkTime(value, index) {
       this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;

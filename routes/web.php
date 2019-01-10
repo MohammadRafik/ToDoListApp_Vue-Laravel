@@ -11,16 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('FrontPage');
-});
+Route::get('/', 'TaskDataController@loadHomePage');
+
 
 Auth::routes();
 
 Route::get('/profile', 'HomeController@index')->name('profile');
-Route::get('/edit', function(){
-    return 'pepega 123';
-});
+
 
 
 Route::post('/createNewTask', 'TaskDataController@create');
+Route::get('/getAllTasks', 'TaskDataController@getAllTasks');
