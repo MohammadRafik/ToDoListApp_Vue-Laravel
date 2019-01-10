@@ -1855,11 +1855,16 @@ __webpack_require__.r(__webpack_exports__);
   // },
   methods: {
     savenewtask: function savenewtask() {
-      if (!this.Task.id) this.Task.id = 1;else this.Task.id++; // if(this.Task.task)
-
-      this.$emit('savenewtask', this.Task);
-      this.Task.task = '';
-      this.Task.description = '';
+      //create the task on the server then emit it to parent vue instance in app.js
+      var them = this;
+      axios.post('/createNewTask', them.Task).then(function (response) {
+        console.log(response);
+        them.$emit('savenewtask', response.data);
+        them.Task.task = '';
+        them.Task.description = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -49716,6 +49721,7 @@ var app = new Vue({
     var self = this; //load tasks from the server
 
     axios.get('/getAllTasks').then(function (response) {
+      //check if response.data is an array
       if (Object.prototype.toString.call(response.data) == '[object Array]') {
         response.data.forEach(function (element) {
           var taskFromServer = {
@@ -49733,24 +49739,25 @@ var app = new Vue({
           };
           self.Tasks.push(taskFromServer);
         });
-      } else if (_typeof(response.data) == 'object') {
-        for (var property in response.data) {
-          var taskFromServer = {
-            id: response.data[property].id,
-            User_id: response.data[property].user_id,
-            task: response.data[property].task,
-            description: response.data[property].description,
-            timeWorked: response.data[property].timeWorked,
-            workDoneMessage: response.data[property].workDoneMessage,
-            toggleMode: response.data[property].toggleMode,
-            workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
-            playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
-            taskCompleted: response.data[property].taskCompleted,
-            color: response.data[property].color
-          };
-          self.Tasks.push(taskFromServer);
+      } //check if response.data is an object
+      else if (_typeof(response.data) == 'object') {
+          for (var property in response.data) {
+            var taskFromServer = {
+              id: response.data[property].id,
+              User_id: response.data[property].user_id,
+              task: response.data[property].task,
+              description: response.data[property].description,
+              timeWorked: response.data[property].timeWorked,
+              workDoneMessage: response.data[property].workDoneMessage,
+              toggleMode: response.data[property].toggleMode,
+              workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
+              playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
+              taskCompleted: response.data[property].taskCompleted,
+              color: response.data[property].color
+            };
+            self.Tasks.push(taskFromServer);
+          }
         }
-      }
     }).catch(function (error) {
       console.log(error);
     });
@@ -49760,33 +49767,9 @@ var app = new Vue({
       this.$modal.show('add-task');
     },
     updateTaskList: function updateTaskList(value) {
+      debugger;
       var valueReal = JSON.parse(JSON.stringify(value));
-      this.Tasks.push(valueReal); //save this new task on the server
-
-      axios.post('/createNewTask', valueReal).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
-    },
-    addTasksFromServer: function addTasksFromServer(tasksArray) {
-      tasksArray.forEach(function (element) {
-        console.log(element);
-        var taskFromServer = {
-          id: element.id,
-          User_id: element.user_id,
-          task: element.task,
-          description: element.description,
-          timeWorked: element.timeWorked,
-          workDoneMessage: element.workDoneMessage,
-          toggleMode: element.toggleMode,
-          workTimeUpdateCheck: element.workTimeUpdateCheck,
-          playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
-          taskCompleted: element.taskCompleted,
-          color: element.color
-        };
-        this.Tasks.push(taskFromServer);
-      });
+      this.Tasks.push(valueReal);
     },
     toggleTrigger: function toggleTrigger(index) {
       //   switch toggle mode
@@ -49825,7 +49808,8 @@ var app = new Vue({
     taskCompleted: function taskCompleted(index) {
       this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
       if (this.Tasks[index].taskCompleted) this.Tasks[index].color = '#d9ffcc';else this.Tasks[index].color = 'white';
-    }
+    },
+    updateTaskOnServer: function updateTaskOnServer(index) {}
   },
   computed: {
     totalWorkOfAllTasks: function totalWorkOfAllTasks() {

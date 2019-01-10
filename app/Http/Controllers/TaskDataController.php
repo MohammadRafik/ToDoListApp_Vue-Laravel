@@ -9,9 +9,8 @@ class TaskDataController extends Controller
 {
     
     public function loadHomePage(){
-        $taskDatas = TaskData::all();
 
-        return view('FrontPage', compact('taskDatas'));
+        return view('FrontPage');
     }
 
     public function create(Request $request){
@@ -22,7 +21,7 @@ class TaskDataController extends Controller
         $taskDataFromJS = $request->all();
 
         //save new task into taskdata table
-        TaskData::create([
+        return TaskData::create([
             'user_id' => $userID,
             'task' => $taskDataFromJS['task'],
             'description' => $taskDataFromJS['description'],

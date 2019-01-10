@@ -63,15 +63,19 @@ export default {
 
   methods:{
     savenewtask: function(){
-        if(!this.Task.id)
-          this.Task.id = 1;
-        else
-          this.Task.id++;
+      //create the task on the server then emit it to parent vue instance in app.js
+      var them=this;
+        axios.post('/createNewTask', them.Task)
+        .then(function (response) {
+            console.log(response);
+            them.$emit('savenewtask', response.data);
+            them.Task.task = '';
+            them.Task.description = '';  
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
 
-      // if(this.Task.task)
-        this.$emit('savenewtask', this.Task);
-        this.Task.task = '';
-        this.Task.description = '';  
     },
 
   },

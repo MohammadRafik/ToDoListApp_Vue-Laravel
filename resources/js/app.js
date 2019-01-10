@@ -61,6 +61,7 @@ const app = new Vue({
             //load tasks from the server
              axios.get('/getAllTasks')
             .then(function (response) {
+                //check if response.data is an array
                 if(Object.prototype.toString.call(response.data) == '[object Array]'){
                 response.data.forEach(function(element){
                     var taskFromServer = {
@@ -79,6 +80,7 @@ const app = new Vue({
                     self.Tasks.push(taskFromServer);
                 });
                 }
+                //check if response.data is an object
                 else if(typeof response.data == 'object'){
                         for(var property in response.data){
                             var taskFromServer = {
@@ -111,39 +113,12 @@ const app = new Vue({
 
         updateTaskList (value)
         {
+            debugger
             var valueReal = JSON.parse(JSON.stringify(value));
             this.Tasks.push(valueReal);
 
-            //save this new task on the server
-
-            axios.post('/createNewTask', valueReal)
-            .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
         },
 
-        addTasksFromServer(tasksArray){
-            tasksArray.forEach(function(element){
-                console.log(element);
-                var taskFromServer = {
-                    id: element.id,
-                    User_id: element.user_id,
-                    task: element.task,
-                    description: element.description,
-                    timeWorked: element.timeWorked,
-                    workDoneMessage: element.workDoneMessage,
-                    toggleMode: element.toggleMode,
-                    workTimeUpdateCheck: element.workTimeUpdateCheck,
-                    playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
-                    taskCompleted: element.taskCompleted,
-                    color: element.color,
-                }
-                this.Tasks.push(taskFromServer);
-            });
-        },
 
         toggleTrigger: function(index){
             //   switch toggle mode
@@ -198,8 +173,11 @@ const app = new Vue({
               this.Tasks[index].color = '#d9ffcc';
             else
               this.Tasks[index].color = 'white';
-          }
+          },
 
+          updateTaskOnServer(index){
+
+          },
     },
 
     computed:{
