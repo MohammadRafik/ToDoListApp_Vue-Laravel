@@ -48,7 +48,21 @@ class TaskDataController extends Controller
         }
     }
 
-    public function update(TaskData $taskData){
+    public function updateTaskData(Request $request){
+        $taskDataFromJS = $request->all();
+        $task = TaskData::all()->where('id', $taskDataFromJS['id']);
+            $task->task->taskDataFromJS['task'];
+            $task->description->taskDataFromJS['description'];
+            $task->timeWorked->taskDataFromJS['timeWorked'];
+            $task->workDoneMessage->taskDataFromJS['workDoneMessage'];
+            $task->toggleMode->taskDataFromJS['toggleMode'];
+            $task->workTimeUpdateCheck->taskDataFromJS['workTimeUpdateCheck'];
+            $task->playAndPauseButtonSymbole->taskDataFromJS['playAndPauseButtonSymbole'];
+            $task->taskCompleted->taskDataFromJS['taskCompleted'];
+            $task->color->taskDataFromJS['color'];
+            $task->todaysTask->taskDataFromJS['todaysTask'];
+        $task->save();
+        return 'updated';
 
     }
 

@@ -22,3 +22,4 @@ Route::get('/profile', 'HomeController@index')->name('profile');
 
 Route::post('/createNewTask', 'TaskDataController@create');
 Route::get('/getAllTasks', 'TaskDataController@getAllTasks');
+Route::post('/updateTaskData', 'taskDataController@updateTaskData');

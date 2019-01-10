@@ -76,6 +76,7 @@ const app = new Vue({
                         playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
                         taskCompleted: element.taskCompleted,
                         color: element.color,
+                        todaysTask: element.todaysTask,
                     }
                     self.Tasks.push(taskFromServer);
                 });
@@ -95,6 +96,7 @@ const app = new Vue({
                                 playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
                                 taskCompleted: response.data[property].taskCompleted,
                                 color: response.data[property].color,
+                                todaysTask: response.data[property].todaysTask,
                             }
                             self.Tasks.push(taskFromServer);
                         }
@@ -138,6 +140,7 @@ const app = new Vue({
             else if(this.Tasks[index].toggleMode)
                 this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
             
+            this.updateTaskOnServer(index);
         },
 
 
@@ -157,6 +160,7 @@ const app = new Vue({
                 else if(mins)
                     this.Tasks[i].workDoneMessage =  " " + mins + " Minutes";
             }
+            this.updateTaskOnServer(index);
         },
 
         deleteCurrentTask: function(index){
@@ -171,9 +175,24 @@ const app = new Vue({
               this.Tasks[index].color = '#d9ffcc';
             else
               this.Tasks[index].color = 'white';
+              this.updateTaskOnServer(index);
           },
 
           updateTaskOnServer(index){
+            axios.post('/updateTaskData', this.Tasks[index])
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+          },
+
+          removeTaskFromToday(index){
+
+          },
+
+          resetToNewDay(){
 
           },
     },

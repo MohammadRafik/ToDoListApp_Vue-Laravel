@@ -49736,7 +49736,8 @@ var app = new Vue({
             workTimeUpdateCheck: element.workTimeUpdateCheck,
             playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
             taskCompleted: element.taskCompleted,
-            color: element.color
+            color: element.color,
+            todaysTask: element.todaysTask
           };
           self.Tasks.push(taskFromServer);
         });
@@ -49754,7 +49755,8 @@ var app = new Vue({
               workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
               playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
               taskCompleted: response.data[property].taskCompleted,
-              color: response.data[property].color
+              color: response.data[property].color,
+              todaysTask: response.data[property].todaysTask
             };
             self.Tasks.push(taskFromServer);
           }
@@ -49786,6 +49788,7 @@ var app = new Vue({
 
 
       if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
+      this.updateTaskOnServer(index);
     },
     updateTotalWorkTime: function updateTotalWorkTime(value, index) {
       this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;
@@ -49799,6 +49802,8 @@ var app = new Vue({
         hours = parseInt(this.Tasks[i].timeWorked / 60);
         if (hours) this.Tasks[i].workDoneMessage = " " + hours + " Hours and " + mins + " minutes";else if (mins) this.Tasks[i].workDoneMessage = " " + mins + " Minutes";
       }
+
+      this.updateTaskOnServer(index);
     },
     deleteCurrentTask: function deleteCurrentTask(index) {
       // before deleting save totalworkTime of this task
@@ -49808,8 +49813,17 @@ var app = new Vue({
     taskCompleted: function taskCompleted(index) {
       this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
       if (this.Tasks[index].taskCompleted) this.Tasks[index].color = '#d9ffcc';else this.Tasks[index].color = 'white';
+      this.updateTaskOnServer(index);
     },
-    updateTaskOnServer: function updateTaskOnServer(index) {}
+    updateTaskOnServer: function updateTaskOnServer(index) {
+      axios.post('/updateTaskData', this.Tasks[index]).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    removeTaskFromToday: function removeTaskFromToday(index) {},
+    resetToNewDay: function resetToNewDay() {}
   },
   computed: {
     totalWorkOfAllTasks: function totalWorkOfAllTasks() {
