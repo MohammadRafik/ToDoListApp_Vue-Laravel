@@ -5,8 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -14,7 +12,7 @@
                         </div>
                     @endif
 
-                    Profile page and details
+                    planning on adding cool statistics here, for example a graph showing hours worked per day.
                 </div>
             </div>
         </div>

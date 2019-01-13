@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class TaskData extends Model
 {
     protected $fillable = [
-        'user_id', 'task', 'description', 'timeWorked', 'workDoneMessage', 'toggleMode', 'workTimeUpdateCheck','playAndPauseButtonSymbole', 'taskCompleted', 'color', 'todaysTask',
+        'user_id', 'task', 'description', 'timeWorked', 'workDoneMessage',
+         'toggleMode', 'workTimeUpdateCheck','playAndPauseButtonSymbole',
+          'taskCompleted', 'color', 'todaysTask',
     ];
 
     public function user()
