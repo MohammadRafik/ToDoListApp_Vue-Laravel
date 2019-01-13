@@ -166,7 +166,9 @@ const app = new Vue({
         deleteCurrentTask: function(index){
             // before deleting save totalworkTime of this task
             this.totalWorkTimeOfDeletedTasks = this.totalWorkTimeOfDeletedTasks + this.Tasks[index].timeWorked;
+            this.deleteTaskOnBackEnd(index);
             this.Tasks.splice(index,1);
+            
         },
 
         taskCompleted: function(index){
@@ -181,6 +183,17 @@ const app = new Vue({
           updateTaskOnServer(index){
             axios.post('/updateTaskData', this.Tasks[index])
             .then(function(response){
+                console.log(response);
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+          },
+
+          deleteTaskOnBackEnd(index){
+            axios.post('/deleteCurrentTask', this.Tasks[index])
+            .then(function(response){
+                //do something if it passes here
                 console.log(response);
             })
             .catch(function(error){

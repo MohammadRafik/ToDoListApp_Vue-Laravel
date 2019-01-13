@@ -70,5 +70,22 @@ class TaskDataController extends Controller
 
     }
 
+    public function removeTaskFromToday(Request $request){
+        $taskDataFromJS = $request->all();
+        $updateDetails = array('todaysTask' => false);
+
+        TaskData::where('id', $taskDataFromJS['id'])->update($updateDetails);
+        
+        return 'task Removed from today';
+    }
+
+    public function deleteTask(Request $request){
+        $taskDataFromJS = $request->all();
+
+        $task = TaskData::where('id', $taskDataFromJS['id']);
+        $task->delete();
+
+        return 'task Deleted';
+    }
 
 }
