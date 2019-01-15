@@ -183,7 +183,7 @@ const app = new Vue({
           updateTaskOnServer(index){
             axios.post('/updateTaskData', this.Tasks[index])
             .then(function(response){
-                console.log(response);
+
             })
             .catch(function(error){
                 console.log(error);
@@ -194,7 +194,7 @@ const app = new Vue({
             axios.post('/deleteCurrentTask', this.Tasks[index])
             .then(function(response){
                 //do something if it passes here
-                console.log(response);
+                
             })
             .catch(function(error){
                 console.log(error);
@@ -226,6 +226,10 @@ const app = new Vue({
                 return  " " + hours + " Hours and " + mins + " minutes";
             else if(mins)
                 return  " " + mins + " Minutes";
+        },
+
+        numberOfTasks: function(){
+            return this.Tasks.length;
         },
 
 

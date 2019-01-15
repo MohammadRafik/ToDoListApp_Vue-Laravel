@@ -9,8 +9,8 @@
         <div class="row justify-content-center">
         <div class="col-sm-10">
             <br>
-            <h1>Welcome to {{ config('app.name', 'ToDoList') }}!</h1><br>
-            <h4><a href={{ route('register') }}> Register </a> to start using ToDoList</h4>
+            <h1>Welcome to {{ config('app.name', 'TaskTimer') }}!</h1><br>
+            <h4><a href={{ route('register') }}> Register </a> to start using TaskTimer</h4>
             <h5>already have an account? <a href= {{ route('login') }}>Login</a>
         </div>
         </div>
@@ -19,7 +19,7 @@
     </div>
 @else 
     {{-- this section is for logged in users --}}
-<div id='app'>
+<div id='app' v-cloak>
     <div class="container">
         <div class="row justify-content-center">
         <div class="col-sm-10">
@@ -27,6 +27,9 @@
             <div class="card-header">Todays Tasks</div>      
                 {{-- show all tasks --}}
                 <ul class="list-group list-group-flush">
+
+                    <li class='list-group-item' v-if='!numberOfTasks'> Looks like you dont have any tasks to work on, click the blue button below to create one! </li>
+
                     <transition-group name='fadeSlow'>
                     <li class="list-group-item" v-for='(task, index) in Tasks' :key='task.id' v-bind:style="{ backgroundColor: task.color}">
                     <div class='taskVerticalControl' >
@@ -75,6 +78,7 @@
 @section('style')
 <style>
 
+[v-cloak] { display: none; }
 
     .taskVerticalControl{
     }
@@ -189,17 +193,20 @@
   opacity: 0;
 }
 
-
+/* ------------------------------------------ */
 .fadeSlow-enter-active {
   transition: opacity 1s;
 }
 
 .fadeSlow-leave-active{
-    transition: opacity 0.5s;
+    transition: opacity 0s;
 }
 
 .fadeSlow-enter, .fadeSlow-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+
+
 </style>
 @endsection
