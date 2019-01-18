@@ -59,9 +59,11 @@ const app = new Vue({
     mounted: function() {
         let self= this;
             //load tasks from the server
+            console.log('making a axios get request');
              axios.get('/getAllTasks')
             .then(function (response) {
                 //check if response.data is an array
+                console.log('axios get request successful');
                 if(Object.prototype.toString.call(response.data) == '[object Array]'){
                 response.data.forEach(function(element){
                     var taskFromServer = {
@@ -103,7 +105,7 @@ const app = new Vue({
                 }
             })
             .catch(function (error) {
-            console.log(error);
+            console.log(error.response);
             });
     },
 
@@ -181,23 +183,39 @@ const app = new Vue({
           },
 
           updateTaskOnServer(index){
-            axios.post('/updateTaskData', this.Tasks[index])
+              console.log('making an axios post request to update backend');
+              //change json to formdata
+              var form_data = new FormData();
+              var item;
+              item = this.Tasks[index];
+                for ( var key in item ) {
+                    form_data.append(key, item[key]);
+                }
+            axios.post('/updateTaskData', form_data)
             .then(function(response){
-
+                console.log('axios post request successful');
             })
             .catch(function(error){
-                console.log(error);
+                console.log(error.response);
             });
           },
 
           deleteTaskOnBackEnd(index){
-            axios.post('/deleteCurrentTask', this.Tasks[index])
+              console.log('making an axios post request to delete task on backend');
+                //change json to formdata
+              var form_data = new FormData();
+              var item;
+              item = this.Tasks[index];
+                for ( var key in item ) {
+                    form_data.append(key, item[key]);
+                }
+            axios.post('/deleteCurrentTask', form_data)
             .then(function(response){
                 //do something if it passes here
-                
+                console.log('axios post request successful');
             })
             .catch(function(error){
-                console.log(error);
+                console.log(error.response);
             });
           },
 

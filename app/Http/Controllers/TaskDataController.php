@@ -25,10 +25,10 @@ class TaskDataController extends Controller
             'user_id' => $userID,
             'task' => $taskDataFromJS['task'],
             'description' => $taskDataFromJS['description'],
-            'timeWorked' => $taskDataFromJS['timeWorked'],
+            'timeWorked' => (int)$taskDataFromJS['timeWorked'],
             'workDoneMessage' => $taskDataFromJS['workDoneMessage'],
             'toggleMode' => $taskDataFromJS['toggleMode'],
-            'workTimeUpdateCheck' => $taskDataFromJS['workTimeUpdateCheck'],
+            'workTimeUpdateCheck' => (int)$taskDataFromJS['workTimeUpdateCheck'],
             'playAndPauseButtonSymbole' => $taskDataFromJS['playAndPauseButtonSymbole'],
             'taskCompleted' => $taskDataFromJS['taskCompleted'],
             'color' => $taskDataFromJS['color'],
@@ -53,10 +53,10 @@ class TaskDataController extends Controller
         $updateDetails = array(
             'task' => $taskDataFromJS['task'],
             'description' => $taskDataFromJS['description'],
-            'timeWorked' => $taskDataFromJS['timeWorked'],
+            'timeWorked' => (int)$taskDataFromJS['timeWorked'],
             'workDoneMessage' => $taskDataFromJS['workDoneMessage'],
             'toggleMode' => false,
-            'workTimeUpdateCheck' => $taskDataFromJS['workTimeUpdateCheck'],
+            'workTimeUpdateCheck' => (int)$taskDataFromJS['workTimeUpdateCheck'],
             'playAndPauseButtonSymbole' => '<i class="material-icons" md-148>play_circle_outline</i>',
             'taskCompleted' => $taskDataFromJS['taskCompleted'],
             'color' => $taskDataFromJS['color'],
@@ -74,7 +74,7 @@ class TaskDataController extends Controller
         $taskDataFromJS = $request->all();
         $updateDetails = array('todaysTask' => false);
 
-        TaskData::where('id', $taskDataFromJS['id'])->update($updateDetails);
+        TaskData::where('id', (int)$taskDataFromJS['id'])->update($updateDetails);
         
         return 'task Removed from today';
     }
