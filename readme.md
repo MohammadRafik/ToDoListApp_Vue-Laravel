@@ -2,7 +2,7 @@ This is an app to list things u want to work on and track how long u have been w
 
 demo:
 
-![](toDoList_Demo.gif)
+![](toDoListDemo.gif)
 
 
-soon I will be adding backend support so all tasks are saved and you can view cool statistics in the future and check ur history
+it now includes backend support, so if you refresh or close and reopen the page ur data wont be lost
