@@ -1881,6 +1881,89 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'addTask',
+  data: function data() {
+    return {
+      Task: {
+        id: '',
+        User_id: '',
+        task: '',
+        description: '',
+        timeWorked: 0,
+        workDoneMessage: 'You havent started working on this task yet',
+        toggleMode: false,
+        workTimeUpdateCheck: '',
+        playAndPauseButtonSymbole: '<i class="material-icons" md-148>play_circle_outline</i>',
+        taskCompleted: false,
+        color: 'white',
+        todaysTask: true
+      },
+      TaskCounter: ''
+    };
+  },
+  // this triggeres when something in Task changes... i think
+  // watch: {
+  //       Task: {
+  //         handler: function(newValue){
+  //           console.log('something changed')
+  //           console.log(newValue)
+  //         },
+  //         deep:true
+  //   }
+  // },
+  methods: {
+    savenewtask: function savenewtask() {
+      //create unique id for each Task.id
+      if (this.TaskCounter == '') this.TaskCounter = 1;else this.TaskCounter = this.TaskCounter + 1;
+      this.Task['id'] = this.TaskCounter; // now we emit the new task to the main vue instance where it will be saved
+
+      this.$emit('savenewtask', this.Task);
+      this.Task.task = '';
+      this.Task.description = '';
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/stopwatch.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/stopwatch.vue?vue&type=script&lang=js& ***!
@@ -5921,6 +6004,25 @@ module.exports = {
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/addTask.vue?vue&type=style&index=0&lang=scss& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".box {\n  background: white;\n  overflow: hidden;\n  width: 656px;\n  height: 400px;\n  border-radius: 2px;\n  box-sizing: border-box;\n  box-shadow: 0 0 40px black;\n  color: #8b8c8d;\n  display: flex;\n  padding: 20px;\n}\n.boxTitle {\n  width: 565px;\n  height: 55px;\n  display: flex;\n  justify-content: center;\n  padding: 20px;\n  margin-bottom: 20px;\n}\n.inputFields {\n  display: flex;\n  justify-content: flex-start;\n  flex-direction: column;\n  width: 565px;\n}\n.inputTitle {\n  width: 80%;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36570,6 +36672,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/sass-loader/lib/loader.js??ref--7-2!../../../node_modules/vue-loader/lib??vue-loader-options!./addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/stopwatch.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/stopwatch.vue?vue&type=style&index=0&lang=css& ***!
@@ -38268,6 +38400,124 @@ render._withStripped = true
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/addTask.vue?vue&type=template&id=218f184b& ***!
   \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "modal",
+    { attrs: { name: "add-task", transition: "pop-out", height: 400 } },
+    [
+      _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("form", [
+            _c("div", { staticClass: "boxTitle" }, [
+              _c("h3", [_vm._v("Add a Task")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "inputFields" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Task.task,
+                    expression: "Task.task"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Task Title",
+                  id: "modalTaskTitle"
+                },
+                domProps: { value: _vm.Task.task },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.Task, "task", $event.target.value)
+                  }
+                }
+              }),
+              _c("br"),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Task.description,
+                    expression: "Task.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "taskDescription",
+                  cols: "30",
+                  rows: "5",
+                  placeholder: "Description (Optional)"
+                },
+                domProps: { value: _vm.Task.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.Task, "description", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 center-block" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: [
+                      function($event) {
+                        $event.preventDefault()
+                        return _vm.savenewtask($event)
+                      },
+                      function($event) {
+                        _vm.$modal.hide("add-task")
+                      }
+                    ]
+                  }
+                },
+                [_vm._v("Create")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2& ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -49711,182 +49961,274 @@ Vue.prototype.$axios = axios;
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('add-a-task', __webpack_require__(/*! ./components/addTask.vue */ "./resources/js/components/addTask.vue").default);
+Vue.component('add-a-task-nli', __webpack_require__(/*! ./components/addTaskNotLoggedIn */ "./resources/js/components/addTaskNotLoggedIn.vue").default);
 Vue.component('stopwatch', __webpack_require__(/*! ./components/stopwatch.vue */ "./resources/js/components/stopwatch.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// for logged in users we use this app instance
 
-var app = new Vue({
-  el: '#app',
-  data: function data() {
-    return {
-      Tasks: [],
-      totalWorkTimeOfDeletedTasks: 0
-    };
-  },
-  //first we check to see if there are any tasks on the server, if yes we load it into this.Tasks
-  mounted: function mounted() {
-    var self = this; //load tasks from the server
+if (document.getElementById("app")) {
+  var app = new Vue({
+    el: '#app',
+    data: function data() {
+      return {
+        Tasks: [],
+        totalWorkTimeOfDeletedTasks: 0
+      };
+    },
+    //first we check to see if there are any tasks on the server, if yes we load it into this.Tasks
+    mounted: function mounted() {
+      var self = this; //load tasks from the server
 
-    console.log('making a axios get request');
-    axios.get('/getAllTasks').then(function (response) {
-      //check if response.data is an array
-      console.log('axios get request successful');
+      console.log('making a axios get request');
+      axios.get('/getAllTasks').then(function (response) {
+        //check if response.data is an array
+        console.log('axios get request successful');
 
-      if (Object.prototype.toString.call(response.data) == '[object Array]') {
-        response.data.forEach(function (element) {
-          var taskFromServer = {
-            id: element.id,
-            User_id: element.user_id,
-            task: element.task,
-            description: element.description,
-            timeWorked: element.timeWorked,
-            workDoneMessage: element.workDoneMessage,
-            toggleMode: element.toggleMode,
-            workTimeUpdateCheck: element.workTimeUpdateCheck,
-            playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
-            taskCompleted: element.taskCompleted,
-            color: element.color,
-            todaysTask: element.todaysTask
-          };
-          self.Tasks.push(taskFromServer);
-        });
-      } //check if response.data is an object
-      else if (_typeof(response.data) == 'object') {
-          for (var property in response.data) {
+        if (Object.prototype.toString.call(response.data) == '[object Array]') {
+          response.data.forEach(function (element) {
             var taskFromServer = {
-              id: response.data[property].id,
-              User_id: response.data[property].user_id,
-              task: response.data[property].task,
-              description: response.data[property].description,
-              timeWorked: response.data[property].timeWorked,
-              workDoneMessage: response.data[property].workDoneMessage,
-              toggleMode: response.data[property].toggleMode,
-              workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
-              playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
-              taskCompleted: response.data[property].taskCompleted,
-              color: response.data[property].color,
-              todaysTask: response.data[property].todaysTask
+              id: element.id,
+              User_id: element.user_id,
+              task: element.task,
+              description: element.description,
+              timeWorked: element.timeWorked,
+              workDoneMessage: element.workDoneMessage,
+              toggleMode: element.toggleMode,
+              workTimeUpdateCheck: element.workTimeUpdateCheck,
+              playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
+              taskCompleted: element.taskCompleted,
+              color: element.color,
+              todaysTask: element.todaysTask
             };
             self.Tasks.push(taskFromServer);
+          });
+        } //check if response.data is an object
+        else if (_typeof(response.data) == 'object') {
+            for (var property in response.data) {
+              var taskFromServer = {
+                id: response.data[property].id,
+                User_id: response.data[property].user_id,
+                task: response.data[property].task,
+                description: response.data[property].description,
+                timeWorked: response.data[property].timeWorked,
+                workDoneMessage: response.data[property].workDoneMessage,
+                toggleMode: response.data[property].toggleMode,
+                workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
+                playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
+                taskCompleted: response.data[property].taskCompleted,
+                color: response.data[property].color,
+                todaysTask: response.data[property].todaysTask
+              };
+              self.Tasks.push(taskFromServer);
+            }
           }
+      }).catch(function (error) {
+        console.log(error.response);
+      });
+    },
+    methods: {
+      openTaskAdder: function openTaskAdder() {
+        this.$modal.show('add-task');
+      },
+      updateTaskList: function updateTaskList(value) {
+        var valueReal = JSON.parse(JSON.stringify(value));
+        this.Tasks.push(valueReal);
+      },
+      toggleTrigger: function toggleTrigger(index) {
+        //   switch toggle mode
+        this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode; //   here we update work done message if new work has started on a new task
+
+        if (this.Tasks[index].workDoneMessage == 'You havent started working on this task yet') {
+          this.Tasks[index].workDoneMessage = "less than a minute";
+        } //   resetting a variable to 0 everytime user ends a session of a task
+
+
+        if (!this.Tasks[index].toggleMode) {
+          this.Tasks[index].workTimeUpdateCheck = 0;
+        } //   here we update what the picture on the button should be
+
+
+        if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
+        this.updateTaskOnServer(index);
+      },
+      updateTotalWorkTime: function updateTotalWorkTime(value, index) {
+        this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;
+        this.Tasks[index].workTimeUpdateCheck = value;
+        var i;
+        var mins;
+        var hours;
+
+        for (i = 0; this.Tasks.length > i; i++) {
+          mins = this.Tasks[i].timeWorked % 60;
+          hours = parseInt(this.Tasks[i].timeWorked / 60);
+          if (hours) this.Tasks[i].workDoneMessage = " " + hours + " Hours and " + mins + " minutes";else if (mins) this.Tasks[i].workDoneMessage = " " + mins + " Minutes";
         }
-    }).catch(function (error) {
-      console.log(error.response);
-    });
-  },
-  methods: {
-    openTaskAdder: function openTaskAdder() {
-      this.$modal.show('add-task');
+
+        this.updateTaskOnServer(index);
+      },
+      deleteCurrentTask: function deleteCurrentTask(index) {
+        // before deleting save totalworkTime of this task
+        this.totalWorkTimeOfDeletedTasks = this.totalWorkTimeOfDeletedTasks + this.Tasks[index].timeWorked;
+        this.deleteTaskOnBackEnd(index);
+        this.Tasks.splice(index, 1);
+      },
+      taskCompleted: function taskCompleted(index) {
+        this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
+        if (this.Tasks[index].taskCompleted) this.Tasks[index].color = '#d9ffcc';else this.Tasks[index].color = 'white';
+        this.updateTaskOnServer(index);
+      },
+      updateTaskOnServer: function updateTaskOnServer(index) {
+        console.log('making an axios post request to update backend'); //change json to formdata
+
+        var form_data = new FormData();
+        var item;
+        item = this.Tasks[index];
+
+        for (var key in item) {
+          form_data.append(key, item[key]);
+        }
+
+        axios.post('/updateTaskData', form_data).then(function (response) {
+          console.log('axios post request successful');
+        }).catch(function (error) {
+          console.log(error.response);
+        });
+      },
+      deleteTaskOnBackEnd: function deleteTaskOnBackEnd(index) {
+        console.log('making an axios post request to delete task on backend'); //change json to formdata
+
+        var form_data = new FormData();
+        var item;
+        item = this.Tasks[index];
+
+        for (var key in item) {
+          form_data.append(key, item[key]);
+        }
+
+        axios.post('/deleteCurrentTask', form_data).then(function (response) {
+          //do something if it passes here
+          console.log('axios post request successful');
+        }).catch(function (error) {
+          console.log(error.response);
+        });
+      },
+      removeTaskFromToday: function removeTaskFromToday(index) {},
+      resetToNewDay: function resetToNewDay() {}
     },
-    updateTaskList: function updateTaskList(value) {
-      var valueReal = JSON.parse(JSON.stringify(value));
-      this.Tasks.push(valueReal);
-    },
-    toggleTrigger: function toggleTrigger(index) {
-      //   switch toggle mode
-      this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode; //   here we update work done message if new work has started on a new task
+    computed: {
+      totalWorkOfAllTasks: function totalWorkOfAllTasks() {
+        var i;
+        var totalWorkTime = 0;
 
-      if (this.Tasks[index].workDoneMessage == 'You havent started working on this task yet') {
-        this.Tasks[index].workDoneMessage = "less than a minute";
-      } //   resetting a variable to 0 everytime user ends a session of a task
+        for (i = 0; this.Tasks.length > i; i++) {
+          totalWorkTime = this.Tasks[i].timeWorked + totalWorkTime;
+        }
 
-
-      if (!this.Tasks[index].toggleMode) {
-        this.Tasks[index].workTimeUpdateCheck = 0;
-      } //   here we update what the picture on the button should be
-
-
-      if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
-      this.updateTaskOnServer(index);
-    },
-    updateTotalWorkTime: function updateTotalWorkTime(value, index) {
-      this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;
-      this.Tasks[index].workTimeUpdateCheck = value;
-      var i;
-      var mins;
-      var hours;
-
-      for (i = 0; this.Tasks.length > i; i++) {
-        mins = this.Tasks[i].timeWorked % 60;
-        hours = parseInt(this.Tasks[i].timeWorked / 60);
-        if (hours) this.Tasks[i].workDoneMessage = " " + hours + " Hours and " + mins + " minutes";else if (mins) this.Tasks[i].workDoneMessage = " " + mins + " Minutes";
+        totalWorkTime = totalWorkTime + this.totalWorkTimeOfDeletedTasks;
+        var mins;
+        var hours;
+        mins = totalWorkTime % 60;
+        hours = parseInt(totalWorkTime / 60);
+        if (hours) return " " + hours + " Hours and " + mins + " minutes";else if (mins) return " " + mins + " Minutes";
+      },
+      numberOfTasks: function numberOfTasks() {
+        return this.Tasks.length;
       }
-
-      this.updateTaskOnServer(index);
-    },
-    deleteCurrentTask: function deleteCurrentTask(index) {
-      // before deleting save totalworkTime of this task
-      this.totalWorkTimeOfDeletedTasks = this.totalWorkTimeOfDeletedTasks + this.Tasks[index].timeWorked;
-      this.deleteTaskOnBackEnd(index);
-      this.Tasks.splice(index, 1);
-    },
-    taskCompleted: function taskCompleted(index) {
-      this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
-      if (this.Tasks[index].taskCompleted) this.Tasks[index].color = '#d9ffcc';else this.Tasks[index].color = 'white';
-      this.updateTaskOnServer(index);
-    },
-    updateTaskOnServer: function updateTaskOnServer(index) {
-      console.log('making an axios post request to update backend'); //change json to formdata
-
-      var form_data = new FormData();
-      var item;
-      item = this.Tasks[index];
-
-      for (var key in item) {
-        form_data.append(key, item[key]);
-      }
-
-      axios.post('/updateTaskData', form_data).then(function (response) {
-        console.log('axios post request successful');
-      }).catch(function (error) {
-        console.log(error.response);
-      });
-    },
-    deleteTaskOnBackEnd: function deleteTaskOnBackEnd(index) {
-      console.log('making an axios post request to delete task on backend'); //change json to formdata
-
-      var form_data = new FormData();
-      var item;
-      item = this.Tasks[index];
-
-      for (var key in item) {
-        form_data.append(key, item[key]);
-      }
-
-      axios.post('/deleteCurrentTask', form_data).then(function (response) {
-        //do something if it passes here
-        console.log('axios post request successful');
-      }).catch(function (error) {
-        console.log(error.response);
-      });
-    },
-    removeTaskFromToday: function removeTaskFromToday(index) {},
-    resetToNewDay: function resetToNewDay() {}
-  },
-  computed: {
-    totalWorkOfAllTasks: function totalWorkOfAllTasks() {
-      var i;
-      var totalWorkTime = 0;
-
-      for (i = 0; this.Tasks.length > i; i++) {
-        totalWorkTime = this.Tasks[i].timeWorked + totalWorkTime;
-      }
-
-      totalWorkTime = totalWorkTime + this.totalWorkTimeOfDeletedTasks;
-      var mins;
-      var hours;
-      mins = totalWorkTime % 60;
-      hours = parseInt(totalWorkTime / 60);
-      if (hours) return " " + hours + " Hours and " + mins + " minutes";else if (mins) return " " + mins + " Minutes";
-    },
-    numberOfTasks: function numberOfTasks() {
-      return this.Tasks.length;
     }
-  }
-});
+  });
+}
+
+; // -------------------------------------------------------------------------------
+// for non logged in users we use this appNotLoggedIn instance
+// -------------------------------------------------------------------------------
+
+if (document.getElementById("appNotLoggedIn")) {
+  var appNotLoggedIn = new Vue({
+    el: '#appNotLoggedIn',
+    data: function data() {
+      return {
+        Tasks: [],
+        totalWorkTimeOfDeletedTasks: 0
+      };
+    },
+    mounted: function mounted() {
+      console.log('creating the notloggedin Vuejs instance');
+    },
+    methods: {
+      openTaskAdder: function openTaskAdder() {
+        this.$modal.show('add-task');
+      },
+      updateTaskList: function updateTaskList(value) {
+        var valueReal = JSON.parse(JSON.stringify(value));
+        this.Tasks.push(valueReal);
+      },
+      toggleTrigger: function toggleTrigger(index) {
+        //   switch toggle mode
+        this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode; //   here we update work done message if new work has started on a new task
+
+        if (this.Tasks[index].workDoneMessage == 'You havent started working on this task yet') {
+          this.Tasks[index].workDoneMessage = "less than a minute";
+        } //   resetting a variable to 0 everytime user ends a session of a task
+
+
+        if (!this.Tasks[index].toggleMode) {
+          this.Tasks[index].workTimeUpdateCheck = 0;
+        } //   here we update what the picture on the button should be
+
+
+        if (!this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';else if (this.Tasks[index].toggleMode) this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
+      },
+      updateTotalWorkTime: function updateTotalWorkTime(value, index) {
+        this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;
+        this.Tasks[index].workTimeUpdateCheck = value;
+        var i;
+        var mins;
+        var hours;
+
+        for (i = 0; this.Tasks.length > i; i++) {
+          mins = this.Tasks[i].timeWorked % 60;
+          hours = parseInt(this.Tasks[i].timeWorked / 60);
+          if (hours) this.Tasks[i].workDoneMessage = " " + hours + " Hours and " + mins + " minutes";else if (mins) this.Tasks[i].workDoneMessage = " " + mins + " Minutes";
+        }
+      },
+      deleteCurrentTask: function deleteCurrentTask(index) {
+        // before deleting save totalworkTime of this task
+        this.totalWorkTimeOfDeletedTasks = this.totalWorkTimeOfDeletedTasks + this.Tasks[index].timeWorked;
+        this.Tasks.splice(index, 1);
+      },
+      taskCompleted: function taskCompleted(index) {
+        this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
+        if (this.Tasks[index].taskCompleted) this.Tasks[index].color = '#d9ffcc';else this.Tasks[index].color = 'white';
+      }
+    },
+    computed: {
+      totalWorkOfAllTasks: function totalWorkOfAllTasks() {
+        var i;
+        var totalWorkTime = 0;
+
+        for (i = 0; this.Tasks.length > i; i++) {
+          totalWorkTime = this.Tasks[i].timeWorked + totalWorkTime;
+        }
+
+        totalWorkTime = totalWorkTime + this.totalWorkTimeOfDeletedTasks;
+        var mins;
+        var hours;
+        mins = totalWorkTime % 60;
+        hours = parseInt(totalWorkTime / 60);
+        if (hours) return " " + hours + " Hours and " + mins + " minutes";else if (mins) return " " + mins + " Minutes";
+      },
+      numberOfTasks: function numberOfTasks() {
+        return this.Tasks.length;
+      }
+    }
+  });
+}
+
+;
 
 /***/ }),
 
@@ -50099,6 +50441,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addTask_vue_vue_type_template_id_218f184b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addTask_vue_vue_type_template_id_218f184b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/addTaskNotLoggedIn.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/addTaskNotLoggedIn.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _addTaskNotLoggedIn_vue_vue_type_template_id_e04de7c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2& */ "./resources/js/components/addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2&");
+/* harmony import */ var _addTaskNotLoggedIn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addTaskNotLoggedIn.vue?vue&type=script&lang=js& */ "./resources/js/components/addTaskNotLoggedIn.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _addTaskNotLoggedIn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _addTaskNotLoggedIn_vue_vue_type_template_id_e04de7c2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _addTaskNotLoggedIn_vue_vue_type_template_id_e04de7c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/addTaskNotLoggedIn.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/addTaskNotLoggedIn.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/addTaskNotLoggedIn.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./addTaskNotLoggedIn.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_lib_loader_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/sass-loader/lib/loader.js??ref--7-2!../../../node_modules/vue-loader/lib??vue-loader-options!./addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_lib_loader_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_lib_loader_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_lib_loader_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_lib_loader_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_lib_loader_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_template_id_e04de7c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/addTaskNotLoggedIn.vue?vue&type=template&id=e04de7c2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_template_id_e04de7c2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addTaskNotLoggedIn_vue_vue_type_template_id_e04de7c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

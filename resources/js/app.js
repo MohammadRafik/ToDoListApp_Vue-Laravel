@@ -33,6 +33,7 @@ Vue.prototype.$axios = axios;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('add-a-task', require('./components/addTask.vue').default);
+Vue.component('add-a-task-nli', require('./components/addTaskNotLoggedIn').default);
 Vue.component('stopwatch', require('./components/stopwatch.vue').default);
 
 
@@ -46,7 +47,8 @@ Vue.component('stopwatch', require('./components/stopwatch.vue').default);
 
 
 
-
+// for logged in users we use this app instance
+if(document.getElementById("app")){
 const app = new Vue({
     el: '#app',
     data() {
@@ -254,6 +256,125 @@ const app = new Vue({
 
     },
 });
+};
 
 
 
+
+
+
+
+
+
+// -------------------------------------------------------------------------------
+// for non logged in users we use this appNotLoggedIn instance
+// -------------------------------------------------------------------------------
+if(document.getElementById("appNotLoggedIn")){
+const appNotLoggedIn = new Vue({
+    el: '#appNotLoggedIn',
+    data() {
+        return {
+            Tasks: [],
+            totalWorkTimeOfDeletedTasks: 0,
+        }
+    },
+    mounted: function() {
+        console.log('creating the notloggedin Vuejs instance')
+    },
+
+    methods: {
+        openTaskAdder: function()
+        {
+            this.$modal.show('add-task')
+        },
+
+        updateTaskList (value)
+        {
+            var valueReal = JSON.parse(JSON.stringify(value));
+            this.Tasks.push(valueReal);
+        },
+
+
+        toggleTrigger: function(index){
+            //   switch toggle mode
+              this.Tasks[index].toggleMode = !this.Tasks[index].toggleMode;
+
+            //   here we update work done message if new work has started on a new task
+              if(this.Tasks[index].workDoneMessage == 'You havent started working on this task yet'){
+                this.Tasks[index].workDoneMessage = "less than a minute";
+              }
+
+            //   resetting a variable to 0 everytime user ends a session of a task
+              if(!this.Tasks[index].toggleMode){
+                  this.Tasks[index].workTimeUpdateCheck = 0;
+              }
+
+            //   here we update what the picture on the button should be
+            if(!this.Tasks[index].toggleMode)
+              this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';
+            else if(this.Tasks[index].toggleMode)
+                this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>pause_circle_outline</i>';
+            
+        },
+
+
+
+        updateTotalWorkTime: function(value, index){
+            this.Tasks[index].timeWorked = this.Tasks[index].timeWorked + value - this.Tasks[index].workTimeUpdateCheck;
+            this.Tasks[index].workTimeUpdateCheck = value;
+
+            var i;
+            var mins;
+            var hours;
+            for (i = 0; this.Tasks.length>i ; i++){
+                mins = this.Tasks[i].timeWorked % 60;
+                hours = parseInt(this.Tasks[i].timeWorked / 60);
+                if(hours)
+                    this.Tasks[i].workDoneMessage =  " " + hours + " Hours and " + mins + " minutes";
+                else if(mins)
+                    this.Tasks[i].workDoneMessage =  " " + mins + " Minutes";
+            }
+        },
+
+        deleteCurrentTask: function(index){
+            // before deleting save totalworkTime of this task
+            this.totalWorkTimeOfDeletedTasks = this.totalWorkTimeOfDeletedTasks + this.Tasks[index].timeWorked;
+            this.Tasks.splice(index,1);
+            
+        },
+
+        taskCompleted: function(index){
+            this.Tasks[index].taskCompleted = !this.Tasks[index].taskCompleted;
+            if(this.Tasks[index].taskCompleted)
+              this.Tasks[index].color = '#d9ffcc';
+            else
+              this.Tasks[index].color = 'white';
+          },
+
+
+    },
+
+    computed:{
+        totalWorkOfAllTasks: function(){
+            var i;
+            var totalWorkTime = 0;
+            for(i=0;this.Tasks.length > i; i++){
+                totalWorkTime = this.Tasks[i].timeWorked + totalWorkTime;
+            }
+            totalWorkTime = totalWorkTime + this.totalWorkTimeOfDeletedTasks
+            var mins;
+            var hours;
+            mins = totalWorkTime % 60;
+            hours = parseInt(totalWorkTime/60);
+            if(hours)
+                return  " " + hours + " Hours and " + mins + " minutes";
+            else if(mins)
+                return  " " + mins + " Minutes";
+        },
+
+        numberOfTasks: function(){
+            return this.Tasks.length;
+        },
+    },
+});
+};

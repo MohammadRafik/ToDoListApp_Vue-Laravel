@@ -4,18 +4,57 @@
 
 @guest
     {{-- guest user --}}
-    <div id="app">
+    <div id="appNotLoggedIn" v-cloak>
         <div class="container">
-        <div class="row justify-content-center">
-        <div class="col-sm-10">
-            <br>
-            <h1>Welcome to {{ config('app.name', 'TaskTimer') }}!</h1><br>
-            <h4><a href={{ route('register') }}> Register </a> to start using TaskTimer</h4>
-            <h5>already have an account? <a href= {{ route('login') }}>Login</a>
-        </div>
-        </div>
-        </div>
-            
+            <div class="row justify-content-center">
+            <div class="col-sm-10">
+            <div class="card">
+                <div class="card-header">Todays Tasks</div>      
+                    {{-- show all tasks --}}
+                    <ul class="list-group list-group-flush">
+    
+                        <li class='list-group-item' v-if='!numberOfTasks'> Looks like you dont have any tasks to work on, click the blue button below to create one! </li>
+    
+                        <transition-group name='fadeSlow'>
+                        <li class="list-group-item" v-for='(task, index) in Tasks' :key='task.id' v-bind:style="{ backgroundColor: task.color}">
+                        <div class='taskVerticalControl' >
+                            <div class='taskHeader'>
+                                <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
+                                <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButtonSymbole' ></button>
+                                <transition name='fade'>
+                                    <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
+                                </transition>
+                                <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)' title='delete this task'></a>
+                            </div>
+                            <div class='taskBody'>
+                                <p class='taskDescription' title='Task Description'> @{{task.description}}</p>
+                                <div class='completeTaskButton'>
+                                    <button class="btn btn-finishTask" v-on:click='taskCompleted(index)'>Task completed</button>
+                                </div>
+                            </div>
+                            <div class='taskFooter'>
+                                <p title='Total work done on this task'>total work: @{{ task.workDoneMessage }}</p>
+                            </div>
+                        </div>
+                        </li>
+                        </transition-group>
+                        </div>
+                    </div>
+                    </div>
+                    </ul>
+                    {{-- add new task --}}
+                    <div class="row justify-content-center">
+                    <div class="col-sm-10">
+                    <div class="card-body">
+                        <add-a-task-nli v-on:savenewtask='updateTaskList'></add-a-task-nli>
+                        <div class='addTaskButton'>
+                            <button v-on:click="openTaskAdder" class="btn btn-primary">add  a task +</button>
+                        </div>
+                        <p v-if="totalWorkOfAllTasks" title='total work done on all tasks'>Total work done today: @{{ totalWorkOfAllTasks }}</p>
+                    </div>
+                    </div>
+                    </div>
+                </div>
     </div>
 @else 
     {{-- this section is for logged in users --}}
@@ -71,7 +110,6 @@
                 </div>
             </div>
     </div>
-</div>
 @endguest
 @endsection
 
