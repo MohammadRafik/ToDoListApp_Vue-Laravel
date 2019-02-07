@@ -24,3 +24,7 @@ Route::post('/createNewTask', 'TaskDataController@create');
 Route::get('/getAllTasks', 'TaskDataController@getAllTasks');
 Route::post('/updateTaskData', 'taskDataController@updateTaskData');
 Route::post('/deleteCurrentTask', 'taskDataController@deleteTask');
+
+Route::get('/about', function(){
+    return view('footerLinks/about');
+});

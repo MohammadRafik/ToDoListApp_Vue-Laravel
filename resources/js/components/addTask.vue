@@ -64,6 +64,11 @@ export default {
 
   methods:{
     savenewtask: function(){
+      //create task on client side first display it, then save it into backend
+
+
+
+
       //create the task on the server then emit it to parent vue instance in app.js
       var them=this;
                 //change json to formdata
@@ -74,7 +79,7 @@ export default {
                     form_data.append(key, item[key]);
                 }
 
-        axios.post('/createNewTask', them.Task)
+        axios.post('/createNewTask', form_data)
         .then(function (response) {
             them.$emit('savenewtask', response.data);
             them.Task.task = '';

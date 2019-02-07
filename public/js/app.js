@@ -1856,6 +1856,7 @@ __webpack_require__.r(__webpack_exports__);
   // },
   methods: {
     savenewtask: function savenewtask() {
+      //create task on client side first display it, then save it into backend
       //create the task on the server then emit it to parent vue instance in app.js
       var them = this; //change json to formdata
 
@@ -1867,7 +1868,7 @@ __webpack_require__.r(__webpack_exports__);
         form_data.append(key, item[key]);
       }
 
-      axios.post('/createNewTask', them.Task).then(function (response) {
+      axios.post('/createNewTask', form_data).then(function (response) {
         them.$emit('savenewtask', response.data);
         them.Task.task = '';
         them.Task.description = '';

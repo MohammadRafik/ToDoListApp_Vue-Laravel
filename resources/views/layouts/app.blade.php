@@ -26,10 +26,30 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- add style here --}}
     @yield('style')
+    <style>
+        .containerOut{
+            min-height: 100%;
+        }
+        .mainOut{
+            overflow:auto;
+            padding-bottom:40px;
+        }
+    .footer{
+        height:40px;
+        margin-top:-40px;
+        clear:both;
+        text-align:center;
+        display:flex;
+        padding: 0% 35% 0% 35%;
+        justify-content: space-between;
+    }
+    </style>
 
 </head>
 <body>
         {{csrf_field()}}
+<div class='containerOut'>
+<div class='mainOut'>
     <div id="layoutapp">
         {{-- header --}}
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -96,65 +116,20 @@
 
 
         {{-- you can add a footer here if you need one--}}
-<!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
-
-        <!-- Footer Links -->
-        <div class="container-fluid text-center text-md-left">
-    
-          <!-- Grid row -->
-          <div class="row">
-    
-            <!-- Grid column -->
-            <div class="col-md-6 mt-md-0 mt-3">
-    
-              <!-- Content -->
-              <h5 class="text-uppercase">Footer Content</h5>
-              <p>Here you can use rows and columns here to organize your footer content.</p>
-    
-            </div>
-            <!-- Grid column -->
-
-              <!-- Grid column -->
-    
-              <!-- Grid column -->
-              <div class="col-md-3 mb-md-0 mb-3">
-    
-                <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
-    
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="#!">Link 1</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 2</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 3</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 4</a>
-                  </li>
-                </ul>
-    
-              </div>
-              <!-- Grid column -->
-    
-          </div>
-          <!-- Grid row -->
-    
-        </div>
-        <!-- Footer Links -->
-    
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-    
-      </footer>
-      <!-- Footer -->
     </div>
+</div>
+</div>
+<!-- Footer -->
+<div class="footer">
+    <a href="/about"> about </a>
+    <a href="/about"> about </a> 
+    <a href="/about"> about </a> 
+    <a href="/about"> about </a> 
+    <a href="/about"> about </a> 
+    <a href="/about"> about </a> 
+    
+</div>
+      <!-- Footer -->
+
 </body>
 </html>

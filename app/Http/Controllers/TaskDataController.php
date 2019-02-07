@@ -27,12 +27,12 @@ class TaskDataController extends Controller
             'description' => $taskDataFromJS['description'],
             'timeWorked' => (int)$taskDataFromJS['timeWorked'],
             'workDoneMessage' => $taskDataFromJS['workDoneMessage'],
-            'toggleMode' => $taskDataFromJS['toggleMode'],
+            'toggleMode' => json_decode($taskDataFromJS['toggleMode']),
             'workTimeUpdateCheck' => (int)$taskDataFromJS['workTimeUpdateCheck'],
             'playAndPauseButtonSymbole' => $taskDataFromJS['playAndPauseButtonSymbole'],
-            'taskCompleted' => $taskDataFromJS['taskCompleted'],
+            'taskCompleted' => json_decode($taskDataFromJS['taskCompleted']),
             'color' => $taskDataFromJS['color'],
-            'todaysTask' =>$taskDataFromJS['todaysTask'],
+            'todaysTask' =>json_decode($taskDataFromJS['todaysTask']),
 
         ]);
     }
@@ -58,9 +58,9 @@ class TaskDataController extends Controller
             'toggleMode' => false,
             'workTimeUpdateCheck' => (int)$taskDataFromJS['workTimeUpdateCheck'],
             'playAndPauseButtonSymbole' => '<i class="material-icons" md-148>play_circle_outline</i>',
-            'taskCompleted' => $taskDataFromJS['taskCompleted'],
+            'taskCompleted' => json_decode($taskDataFromJS['taskCompleted']),
             'color' => $taskDataFromJS['color'],
-            'todaysTask' => $taskDataFromJS['todaysTask']
+            'todaysTask' => json_decode($taskDataFromJS['todaysTask'])
         );
 
         TaskData::where('id', $taskDataFromJS['id'])->update($updateDetails);
