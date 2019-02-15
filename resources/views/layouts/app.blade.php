@@ -38,10 +38,11 @@
         height:40px;
         margin-top:-40px;
         clear:both;
-        text-align:center;
-        display:flex;
-        padding: 0% 35% 0% 35%;
-        justify-content: space-between;
+        text-align:right;
+    }
+
+    .footerLink{
+        padding: 0px 10px 0px 10px;
     }
     </style>
 
@@ -121,13 +122,12 @@
 </div>
 <!-- Footer -->
 <div class="footer">
-    <a href="/about"> about </a>
-    <a href="/about"> about </a> 
-    <a href="/about"> about </a> 
-    <a href="/about"> about </a> 
-    <a href="/about"> about </a> 
-    <a href="/about"> about </a> 
-    
+    <div class="col-sm-10">
+        <a class='footerLink' href="/">Home</a>
+        <a class='footerLink' href="/about">About</a>
+        <a class='footerLink' href="/contact">Contact</a> 
+        <a class='footerLink' href="/support">Support </a>
+    </div>
 </div>
       <!-- Footer -->
 

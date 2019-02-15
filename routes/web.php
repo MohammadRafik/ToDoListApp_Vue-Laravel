@@ -25,6 +25,14 @@ Route::get('/getAllTasks', 'TaskDataController@getAllTasks');
 Route::post('/updateTaskData', 'taskDataController@updateTaskData');
 Route::post('/deleteCurrentTask', 'taskDataController@deleteTask');
 
+
+
 Route::get('/about', function(){
     return view('footerLinks/about');
+});
+Route::get('/contact', function(){
+    return view('footerLinks/contactus');
+});
+Route::get('/support', function(){
+    return view('footerLinks/support');
 });
