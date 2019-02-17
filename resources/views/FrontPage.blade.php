@@ -52,6 +52,7 @@
                         </div>
                         <p v-if="totalWorkOfAllTasks" title='total work done on all tasks'>Total work done today: @{{ totalWorkOfAllTasks }}</p>
                     </div>
+                    <p class='beforeFooter' v-if='numberOfTasks'>Please note that If you're logged in you wont have to worry about losing your data evertime you close this page</p>
                     </div>
                     </div>
                 </div>
@@ -221,6 +222,10 @@
 
     .addTaskButton{
 
+    }
+
+    .beforeFooter{
+        text-align:right;
     }
 
     /* transitoin effects */
