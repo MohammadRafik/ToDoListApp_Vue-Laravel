@@ -50005,6 +50005,8 @@ if (document.getElementById("app")) {
               color: element.color,
               todaysTask: parseInt(element.todaysTask)
             };
+            if (taskFromServer.task == 'null') taskFromServer.task = '';
+            if (taskFromServer.description == 'null') taskFromServer.description = '';
             self.Tasks.push(taskFromServer);
           });
         } //check if response.data is an object
@@ -50024,6 +50026,8 @@ if (document.getElementById("app")) {
                 color: response.data[property].color,
                 todaysTask: parseInt(response.data[property].todaysTask)
               };
+              if (taskFromServer.task == 'null') taskFromServer.task = '';
+              if (taskFromServer.description == 'null') taskFromServer.description = '';
               self.Tasks.push(taskFromServer);
             }
           }

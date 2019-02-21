@@ -82,6 +82,10 @@ const app = new Vue({
                         color: element.color,
                         todaysTask: parseInt(element.todaysTask),
                     }
+                    if(taskFromServer.task == 'null')
+                        taskFromServer.task = '';
+                    if(taskFromServer.description == 'null')
+                        taskFromServer.description = '';
                     self.Tasks.push(taskFromServer);
                 });
                 }
@@ -102,6 +106,10 @@ const app = new Vue({
                                 color: response.data[property].color,
                                 todaysTask: parseInt(response.data[property].todaysTask),
                             }
+                            if(taskFromServer.task == 'null')
+                                taskFromServer.task = '';
+                            if(taskFromServer.description == 'null')
+                                taskFromServer.description = '';
                             self.Tasks.push(taskFromServer);
                         }
                 }
