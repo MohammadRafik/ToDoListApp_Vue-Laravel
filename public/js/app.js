@@ -49993,17 +49993,17 @@ if (document.getElementById("app")) {
           response.data.forEach(function (element) {
             var taskFromServer = {
               id: element.id,
-              User_id: element.user_id,
+              User_id: parseInt(element.user_id),
               task: element.task,
               description: element.description,
               timeWorked: element.timeWorked,
               workDoneMessage: element.workDoneMessage,
-              toggleMode: element.toggleMode,
+              toggleMode: parseInt(element.toggleMode),
               workTimeUpdateCheck: element.workTimeUpdateCheck,
               playAndPauseButtonSymbole: element.playAndPauseButtonSymbole,
-              taskCompleted: element.taskCompleted,
+              taskCompleted: parseInt(element.taskCompleted),
               color: element.color,
-              todaysTask: element.todaysTask
+              todaysTask: parseInt(element.todaysTask)
             };
             self.Tasks.push(taskFromServer);
           });
@@ -50012,17 +50012,17 @@ if (document.getElementById("app")) {
             for (var property in response.data) {
               var taskFromServer = {
                 id: response.data[property].id,
-                User_id: response.data[property].user_id,
+                User_id: parseInt(response.data[property].user_id),
                 task: response.data[property].task,
                 description: response.data[property].description,
                 timeWorked: response.data[property].timeWorked,
                 workDoneMessage: response.data[property].workDoneMessage,
-                toggleMode: response.data[property].toggleMode,
+                toggleMode: parseInt(response.data[property].toggleMode),
                 workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
                 playAndPauseButtonSymbole: response.data[property].playAndPauseButtonSymbole,
-                taskCompleted: response.data[property].taskCompleted,
+                taskCompleted: parseInt(response.data[property].taskCompleted),
                 color: response.data[property].color,
-                todaysTask: response.data[property].todaysTask
+                todaysTask: parseInt(response.data[property].todaysTask)
               };
               self.Tasks.push(taskFromServer);
             }

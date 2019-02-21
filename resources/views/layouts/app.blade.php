@@ -126,7 +126,6 @@
         <a class='footerLink' href="/">Home</a>
         <a class='footerLink' href="/about">About</a>
         <a class='footerLink' href="/contact">Contact</a> 
-        <a class='footerLink' href="/support">Support </a>
     </div>
 </div>
       <!-- Footer -->
