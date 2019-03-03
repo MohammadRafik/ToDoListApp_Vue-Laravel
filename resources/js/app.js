@@ -35,7 +35,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('add-a-task', require('./components/addTask.vue').default);
 Vue.component('add-a-task-nli', require('./components/addTaskNotLoggedIn').default);
 Vue.component('stopwatch', require('./components/stopwatch.vue').default);
-
+Vue.component('vue-title', require('./components/dynamicTitle.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -46,6 +46,7 @@ Vue.component('stopwatch', require('./components/stopwatch.vue').default);
 
 
 
+// document.title =;
 
 // for logged in users we use this app instance
 if(document.getElementById("app")){
@@ -73,7 +74,7 @@ const app = new Vue({
                         User_id: parseInt(element.user_id),
                         task: element.task,
                         description: element.description,
-                        timeWorked: element.timeWorked,
+                        timeWorked: parseInt(element.timeWorked),
                         workDoneMessage: element.workDoneMessage,
                         toggleMode: parseInt(element.toggleMode),
                         workTimeUpdateCheck: element.workTimeUpdateCheck,
@@ -97,7 +98,7 @@ const app = new Vue({
                                 User_id: parseInt(response.data[property].user_id),
                                 task: response.data[property].task,
                                 description: response.data[property].description,
-                                timeWorked: response.data[property].timeWorked,
+                                timeWorked: parseInt(response.data[property].timeWorked),
                                 workDoneMessage: response.data[property].workDoneMessage,
                                 toggleMode: parseInt(response.data[property].toggleMode),
                                 workTimeUpdateCheck: response.data[property].workTimeUpdateCheck,
@@ -146,7 +147,7 @@ const app = new Vue({
                   this.Tasks[index].workTimeUpdateCheck = 0;
               }
 
-            //   here we update what the picture on the button should be
+            //   here we update what the symbol on the button should be
             if(!this.Tasks[index].toggleMode)
               this.Tasks[index].playAndPauseButtonSymbole = '<i class="material-icons" md-148>play_circle_outline</i>';
             else if(this.Tasks[index].toggleMode)

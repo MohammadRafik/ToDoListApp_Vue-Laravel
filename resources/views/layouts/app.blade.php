@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <link rel="icon" href="https://image.shutterstock.com/z/stock-vector-stopwatch-stop-watch-timer-flat-vector-icon-for-apps-and-websites-355549763.jpg">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'ToDo List') }}</title>
-
+    @if (Route::getCurrentRoute()->uri() == '/')
+        <title>{{ config('app.name', 'ToDo List') }}</title>
+    @else
+        <title>{{ config('app.name', 'ToDo List') }}</title>
+    @endif
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     {{-- Vue.js --}}

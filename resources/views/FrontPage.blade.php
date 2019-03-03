@@ -9,7 +9,7 @@
             <div class="row justify-content-center">
             <div class="col-sm-10">
             <div class="card">
-                <div class="card-header">Todays Tasks</div>      
+                <div class="card-header">Todays Tasks</div>    
                     {{-- show all tasks --}}
                     <ul class="list-group list-group-flush">
     
@@ -22,7 +22,10 @@
                                 <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
                                 <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButtonSymbole' ></button>
                                 <transition name='fade'>
-                                    <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
+                                    <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>
+                                        <vue-title></vue-title>
+                                        current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch>
+                                    </p>
                                 </transition>
                                 <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)' title='delete this task'></a>
                             </div>
@@ -64,7 +67,8 @@
         <div class="row justify-content-center">
         <div class="col-sm-10">
         <div class="card">
-            <div class="card-header">Todays Tasks</div>      
+            <div class="card-header">Todays Tasks</div>
+                  
                 {{-- show all tasks --}}
                 <ul class="list-group list-group-flush">
 
@@ -77,7 +81,10 @@
                             <h3 class=taskTitle title='Task Title'> @{{ task.task }}</h3> 
                             <button class='taskTimeToggle' v-on:click='toggleTrigger(index)' title='start/stop session' v-html='task.playAndPauseButtonSymbole' ></button>
                             <transition name='fade'>
-                                <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> </p>
+                                <p v-if="Tasks[index].toggleMode" class='taskSessionTimer' title='time of current session'>
+                                    <vue-title></vue-title>
+                                    current Session: <stopwatch v-on:afteronemin='updateTotalWorkTime($event, index)'></stopwatch> 
+                                </p>
                             </transition>
                             <a href='#' class='closeTask' v-on:click.prevent='deleteCurrentTask(index)' title='delete this task'></a>
                         </div>
@@ -115,6 +122,11 @@
 @endsection
 
 @section('style')
+
+
+
+
+
 <style>
 
 [v-cloak] { display: none; }
